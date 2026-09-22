@@ -107,14 +107,15 @@ A Postman collection covering all core endpoints below, with saved exmaples, is 
 |GET     | /api/report/fleet-summary | Fleet summary report (requires X-Staff-Role: management) |
 
 ## Validation Rules
-**Rent**: fails with 400 if the vehicle's status is anything other than AVAILABLE.
-**Return**: fails with 400 if the vehicle's status is anything other than RENTED.
-**Add**: requires vin, vrm, colour, year, make, model, branch, category, seat_number, daily_rate_gbp; fails with 400 listing the missing field if any are missing.
-**Fleet summary report**: requires the *X-Staff-Role: management* header; any other or missing value is rejected from viewing the report with a 403 error.
+- **Rent**: fails with 400 if the vehicle's status is anything other than AVAILABLE.
+- **Return**: fails with 400 if the vehicle's status is anything other than RENTED.
+- **Add**: requires vin, vrm, colour, year, make, model, branch, category, seat_number, daily_rate_gbp; fails with 400 listing the missing field if any are missing.
+- **Fleet summary report**: requires the *X-Staff-Role: management* header; any other or missing value is rejected from viewing the report with a 403 error.
 
 ## Status (Error) Codes
 
 |Code|Meaning|
+|----|-------|
 |200|Success|
 |201|New Vehicle Created|
 |400|Invalid request|
@@ -125,6 +126,7 @@ A Postman collection covering all core endpoints below, with saved exmaples, is 
 
 ### Layered Architecture 
 
+```
 Client (Frontend / Postman)
     ↓
 [Flask API / Controller]
@@ -147,13 +149,16 @@ Client (Frontend / Postman)
     ↓
 SQLite Database
 
+```
 ### Initial Data Source
 
+```
 CSV Data
     ↓
 Data Import
     ↓
 SQLite Database
+```
 
 ## Authors
 
