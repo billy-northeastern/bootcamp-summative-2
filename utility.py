@@ -14,3 +14,5 @@ def vehicle_to_dict(v):
         "daily_rate_gbp": v.daily_rate_gbp,
         "status": v.status
     }
+
+print("test")
