@@ -18,34 +18,36 @@ Please ensure both vehicle.csv and customer.csv are in the data/ folder before r
 
 
 ### Technologies Used
-**Python** - Object-Oriented Programming Language
-**Flask** - Python web framework for building REST API and HTTP request handling
-**Flask-SQLAlchemy** - Flask Extension connecting Python objects to database 
-**SQLite** - Database for storing Car-Go data
-**Postman** - Tests API through sending HTTP requests and verifying responses.
-**VSCode** - Code editor for building. 
+- **Python** - Object-Oriented Programming Language
+- **Flask** - Python web framework for building REST API and HTTP request handling
+- **Flask-SQLAlchemy**- Flask Extension connecting Python objects to database 
+- **SQLite** - Database for storing Car-Go data
+- **Postman** - Tests API through sending HTTP requests and verifying responses.
+- **VSCode** - Code editor for building. 
 
 ## Project Structure
 
-CarGoRental/
+```
+CarGoConnect/
 ├── app.py             # Flask app entry point, startup, route registration
 ├── models.py          # SQLAlchemy models (Vehicle, Customer)
 ├── database.py        # Database connection and session management
 ├── data_loader.py     # CSV data import into SQLite database
 ├── utility.py         # Helper function
 ├── routes/
-│   ├── vehicles.py    # CRUD operations for vehicles + core rent/return endpoints
-│   ├── search.py      # Cross-branch fleet search expansion
-│   └── access.py      # RBAC / fleet summary report expansion
+    ├── vehicles.py    # CRUD operations for vehicles + core rent/return endpoints
+    ├── search.py      # Cross-branch fleet search expansion
+    └── access.py      # RBAC / fleet summary report expansion
 ├── static/            # Static files i.e. HTML, CSS, JS
 ├── data/    
-│   ├── vehicles.csv   # vehicle.csv, 
-│   ├──customers.csv   #customer.csv
+    ├── vehicles.csv   # vehicle.csv, 
+    ├──customers.csv   #customer.csv
 ├── docs/
-│   ├── postman_collection.json  # Exported Postman collection
-│   └── supporting_documents     # Supporting documents
+    ├── postman_collection.json  # Exported Postman collection
+    └── supporting_documents     # Supporting documents
 ├── requirements.txt   # Project dependencies
 └── .gitignore         # Git ignore file
+```
 
 ## Installation
 
@@ -57,24 +59,30 @@ cd your-repo-name
 
 2. Create a virtual environment (optional but recommended).
 
-Windows: 
-```python -m venv venv```
+**Windows**
+ ```bash
+ python -m venv venv
+venv\Scripts\activate
 
-```venv\Scripts\activate```
+**Mac/Linux** 
 
-Mac/Linux:
-```python3 -m venv venv```
-```source venv/bin/activate```
+python3 -m venv venv
+source venv/bin/activate
+```
 
 3. Install the necessary dependencies.
 
-```pip install -r requirements.txt```
+```bash 
+pip install -r requirements.txt
+```
 
 4. Ensure the CSV files are in the data/ folder.
 
 5. Run the application.
 
-```python app.py```
+```bash 
+python app.py
+```
 6. The server will start running on the local web address https://127.0.0.1:5000. On first run, it loads all vehicles from the vehicle.csv file into a fresh SQLite database called **cargo.db**.
 
 
