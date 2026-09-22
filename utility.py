@@ -15,4 +15,3 @@ def vehicle_to_dict(v):
         "status": v.status
     }
 
-print("test")
