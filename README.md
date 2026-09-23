@@ -174,5 +174,3 @@ SQLite Database
 ## Authors
 
 Sameerah Mahmood - Backend Developer
-
-print
