@@ -94,7 +94,12 @@ def add_vehicle():
     for field in required_fields:
         if field not in data:
             return jsonify({"error": f"Missing required field: {field}"}), 400
-
+    #check if vehicle already present
+    vehicle = db.query(Vehicle).filter(
+        Vehicle.vrm == data["vrm"]
+    ).first()
+    if vehicle:
+        return jsonify({"Error": "Vehicle already exists. Please try again."}), 400
     # create new vehicle
     vehicle = Vehicle(**data)
     db.add(vehicle)
