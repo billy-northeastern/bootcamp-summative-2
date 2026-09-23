@@ -106,8 +106,8 @@ A Postman collection covering all core endpoints below, with saved exmaples, is 
 | GET    | /api/vehicles/<vrm> | Information of one specific vehicle |
 | GET    | /api/vehicles | List all vehicles in the fleet |
 | POST   | /api/vehicles | Add a new vehicle to the fleet |
-| PATCH  | /api/vehicles/```bash <vrm>```/rent | Rent a vehicle (change status to RENTED) |
-| PATCH  | /api/vehicles/```bash<vrm>```/return | Return a vehicle (change status to AVAILABLE) |
+| PATCH  | /api/vehicles/```<vrm>```/rent | Rent a vehicle (change status to RENTED) |
+| PATCH  | /api/vehicles/```<vrm>```/return | Return a vehicle (change status to AVAILABLE) |
 | DELETE | /api/vehicles/<vrm> | Remove a vehicle from the fleet |
 | GET    | /api/vehicles/search | Search filter for vehicles by criteria |
 |POST     | /api/user/login | RBAC based authentication via user credentials |
