@@ -15,6 +15,9 @@ Please ensure both vehicle.csv and customer.csv are in the data/ folder before r
 * pip
 * virtualenv (optional but recommended)
 * SQLite 3.0 or higher
+* SQLALchemy
+* Flask-JWT-Extended
+* 
 
 
 ### Technologies Used
@@ -53,19 +56,22 @@ CarGoConnect/
 
 1. Clone the repository to your local machine.
 
+```bash
+
+# https
 git clone https://github.com/billy-northeastern/bootcamp-summative-2.git
 
 cd your-repo-name
-
+```
 2. Create a virtual environment (optional but recommended).
 
 **Windows**
  ```bash
  python -m venv venv
 venv\Scripts\activate
-
+```
 **Mac/Linux** 
-
+```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
@@ -100,18 +106,21 @@ A Postman collection covering all core endpoints below, with saved exmaples, is 
 | GET    | /api/vehicles/<vrm> | Information of one specific vehicle |
 | GET    | /api/vehicles | List all vehicles in the fleet |
 | POST   | /api/vehicles | Add a new vehicle to the fleet |
-| PATCH  | /api/vehicles/<vrm>/rent | Rent a vehicle (change status to RENTED) |
-| PATCH  | /api/vehicles/<vrm>/return | Return a vehicle (change status to AVAILABLE) |
+| PATCH  | /api/vehicles/```bash <vrm>```/rent | Rent a vehicle (change status to RENTED) |
+| PATCH  | /api/vehicles/```bash<vrm>```/return | Return a vehicle (change status to AVAILABLE) |
 | DELETE | /api/vehicles/<vrm> | Remove a vehicle from the fleet |
 | GET    | /api/vehicles/search | Search filter for vehicles by criteria |
-|GET     | /api/report/fleet-summary | Fleet summary report (requires X-Staff-Role: management) |
+|POST     | /api/user/login | RBAC based authentication via user credentials |
+|GET     | /api/report/fleet-summary | Fleet summary report (requires Staff-Role: management) |
 
 ## Validation Rules
 - **Rent**: fails with 400 if the vehicle's status is anything other than AVAILABLE.
 - **Return**: fails with 400 if the vehicle's status is anything other than RENTED.
 - **Add**: requires vin, vrm, colour, year, make, model, branch, category, seat_number, daily_rate_gbp; fails with 400 listing the missing field if any are missing.
 - **Fleet summary report**: requires the *X-Staff-Role: management* header; any other or missing value is rejected from viewing the report with a 403 error.
-
+- **VRM**: the value must be unique. Returns 400 if a vehicle with the same VRM already exists in the database. 
+- **Branch Filter**: Returns an empty array if no vehicles exists in the specified branch.
+- **Status Filter**: Return an empty array if no vehicles match the status specified.  
 ## Status (Error) Codes
 
 |Code|Meaning|
@@ -119,8 +128,10 @@ A Postman collection covering all core endpoints below, with saved exmaples, is 
 |200|Success|
 |201|New Vehicle Created|
 |400|Invalid request|
+|400|Authentication Required or Expired Access Token|
 |403|Unauthorised for this endpoint (role check failed)|
 |404|Vehicle not found|
+|500|Internal Server Issue|
 
 ## Architecture Notes
 
