@@ -9,7 +9,7 @@ class Vehicle(Base):
     __tablename__ = "vehicles"
     vehicle_id = Column(Integer, primary_key=True, autoincrement=True)
     vin = Column(String,unique=True, index=True)  # vehicle identification number
-    year = Column(String) 
+    year = Column(Integer) 
     vrm = Column(String, unique=True, index=True)  # vehicle registration mark
     make = Column(String)
     colour = Column(String)
