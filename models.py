@@ -20,3 +20,4 @@ class Vehicle(Base):
     seat_number = Column(Integer) 
     daily_rate_gbp = Column(Float) # rental cost per day
     status = Column(String, default="AVAILABLE")  # status of vehicle (AVAILABLE, RENTED, MAINTENANCE)
+
