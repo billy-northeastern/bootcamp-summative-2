@@ -12,7 +12,7 @@ def load_vehicles_from_csv(csv_file):
                 vin=row['vin'],
                 vrm=row['vrm'],
                 colour=row['colour'],
-                year=row['year'],
+                year=int(row['year']),
                 make=row['make'],
                 model=row['model'],
                 branch=row['branch'],
