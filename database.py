@@ -8,4 +8,5 @@ engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 # establishes database sessions, ensuring that each request uses its own connection to the database 
 SessionLocal = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
 
+print("test")
 
