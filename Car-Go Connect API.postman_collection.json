@@ -126,7 +126,7 @@
                 }
               ]
             },
-            "description": "Tests the vehicle search endpoint by filtering vehicles by the category (e.g. Budget, Compact, Truck, SUV, Sport, Family, Van and Coupe) and returns all vehicles matching the specified category."
+            "description": "Tests the vehicle search endpoint by filtering vehicles by category (e.g. Budget, Compact, Truck, SUV, Sport, Family, Van and Coupe) and returns all vehicles matching the specified category."
           },
           "response": [
             {
@@ -393,7 +393,8 @@
                   "value": "SUV"
                 }
               ]
-            }
+            },
+            "description": "Tests the vehicle search endpoint by filtering vehicles by both fleet branch and category and returns all vehicles matching the specified filters."
           },
           "response": [
             {
@@ -583,7 +584,7 @@
                 "fleet-summary"
               ]
             },
-            "description": "Returns fleet utilisation statistics for each branch, including:\n\n- the total count of vehicles\n    \n- the total count of rented vehicles\n    \n- utilisation rate (percentage of vehicles in a branch that are rented out)\n    \n\nAccess is limited to authenticated users with the management role to support RBAC capabilities."
+            "description": "Returns fleet utilisation statistics for each branch, including:\n\n- the total count of vehicles\n    \n- the total count of rented vehicles\n    \n- utilisation rate (percentage of vehicles in a branch that are rented out)\n    \n\nAccess is limited to authenticated users with the management role to support RBAC capabilities.\n\nUse the copied access token generated in the login page to gain access to the management-only Fleet Summary Report page. Open the Authorization tab, select **Bearer** token under Auth Type and paste the access token in the **Token** input field."
           },
           "response": [
             {
@@ -785,7 +786,7 @@
             "available"
           ]
         },
-        "description": "**Returns all vehicles with an** **`AVAILABLE`** **status in the rental fleet across all branches.**"
+        "description": "Returns all vehicles with an `AVAILABLE` status in the rental fleet across all branches."
       },
       "response": [
         {
@@ -861,7 +862,7 @@
             "rented"
           ]
         },
-        "description": "**Returns all vehicles with a** **`RENTED`** **status in the rental fleet across all branches.**"
+        "description": "Returns all vehicles with a `RENTED` status in the rental fleet across all branches."
       },
       "response": [
         {
@@ -937,7 +938,7 @@
             "RM38TUU"
           ]
         },
-        "description": "Returns a vehicle using the specified or vehicle registration number."
+        "description": "Returns a single vehicle using its specified `vrm` or vehicle registration number."
       },
       "response": [
         {
@@ -1021,7 +1022,8 @@
             "vehicles",
             "add"
           ]
-        }
+        },
+        "description": "Tests the creation of a new vehicle record in the fleet database. This endpoint validates all required fields which need to be added to the **Request Body** in the **Body** tab before submitting the request. It then returns the newly created vehicle upon successful creation."
       },
       "response": [
         {
@@ -1106,7 +1108,8 @@
             "YS62YNO",
             "rent"
           ]
-        }
+        },
+        "description": "Marks an vehicle that can be rented as `RENTED` using the specified `vrm` or vehicle registration number."
       },
       "response": [
         {
@@ -1183,7 +1186,8 @@
             "JM00IOR",
             "return"
           ]
-        }
+        },
+        "description": "Marks a vehicle as returned using the specified `vrm` or vehicle registration number. The returned vehicle will be generally marked as `AVAILABLE`."
       },
       "response": [
         {
