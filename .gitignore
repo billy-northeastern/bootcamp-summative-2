@@ -27,4 +27,3 @@ htmlcov/
 Thumbs.db
 
 *.log
-print("Test")
