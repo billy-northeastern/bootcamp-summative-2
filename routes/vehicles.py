@@ -116,3 +116,4 @@ def remove_vehicle(vrm):
     db.commit()
 
     return jsonify({"message": "Vehicle removed successfully"}), 200
+print("test")
