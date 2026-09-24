@@ -126,7 +126,7 @@
                 }
               ]
             },
-            "description": "Tests the vehicle search endpoint by filtering vehicles by category (e.g. Budget, Compact, Truck, SUV, Sport, Family, Van and Coupe) and returns all vehicles matching the specified category."
+            "description": "Tests the vehicle search endpoint by filtering vehicles by the category (e.g. Budget, Compact, Truck, SUV, Sport, Family, Van and Coupe) and returns all vehicles matching the specified category."
           },
           "response": [
             {
@@ -369,7 +369,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://127.0.0.1:5000/api/vehicles/search?branch=Bristol&category=SUV",
+              "raw": "http://127.0.0.1:5000/api/vehicles/search?branch=Bristol&category=Compact",
               "protocol": "http",
               "host": [
                 "127",
@@ -390,7 +390,7 @@
                 },
                 {
                   "key": "category",
-                  "value": "SUV"
+                  "value": "Compact"
                 }
               ]
             },
@@ -466,7 +466,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"username\": \"management\",\r\n    \"password\": \"management123\"\r\n}",
+              "raw": " {\r\n    \"username\": \"management\",\r\n    \"password\": \"management123\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -550,6 +550,65 @@
               ],
               "cookie": [],
               "body": "{\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc5MDE1NTg0MCwianRpIjoiZTY0NWM2OGItYzMxYi00MDJmLTkwY2YtNjZiYjEzNDVjZjhkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im1hbmFnZW1lbnQiLCJuYmYiOjE3OTAxNTU4NDAsImNzcmYiOiIzNzFmMTUxMC02NTVhLTRiM2YtOWVmOC1hZGIyY2MwNjI4NjAiLCJleHAiOjE3OTAxNTY3NDAsInJvbGUiOiJtYW5hZ2VtZW50In0.y9P9LOx2ITfo9cMk0cBBF5uThToMyLK1gu5BbfsoNzM\"\n}"
+            },
+            {
+              "name": "Management Login (RBAC) - Unauthorised 401",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": " {\r\n    \"username\": \"booking_staff\",\r\n    \"password\": \"management123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:5000/api/user/login",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "UNAUTHORIZED",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "server",
+                  "value": "Werkzeug/3.1.3 Python/3.13.5"
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 24 Sep 2026 09:15:26 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"Error\": \"Incorrect username or password\"\n}"
             }
           ]
         },
@@ -561,7 +620,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc5MDE1NTg0MCwianRpIjoiZTY0NWM2OGItYzMxYi00MDJmLTkwY2YtNjZiYjEzNDVjZjhkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im1hbmFnZW1lbnQiLCJuYmYiOjE3OTAxNTU4NDAsImNzcmYiOiIzNzFmMTUxMC02NTVhLTRiM2YtOWVmOC1hZGIyY2MwNjI4NjAiLCJleHAiOjE3OTAxNTY3NDAsInJvbGUiOiJtYW5hZ2VtZW50In0.y9P9LOx2ITfo9cMk0cBBF5uThToMyLK1gu5BbfsoNzM",
+                  "value": "",
                   "type": "string"
                 }
               ]
@@ -588,7 +647,57 @@
           },
           "response": [
             {
-              "name": "Token Expired - Fleet Summary Report",
+              "name": "Fleet Summary Report - No Token Given",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:5000/api/report/fleet-summary",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "report",
+                    "fleet-summary"
+                  ]
+                }
+              },
+              "status": "UNAUTHORIZED",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "server",
+                  "value": "Werkzeug/3.1.3 Python/3.13.5"
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 24 Sep 2026 09:12:03 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "content-length",
+                  "value": "69"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"Error\": \"Authentication token is required. Please try again.\"\n}"
+            },
+            {
+              "name": "Fleet Summary Report - Token Expired",
               "originalRequest": {
                 "method": "GET",
                 "header": [],
@@ -688,6 +797,30 @@
               "body": "[\n  {\n    \"branch\": \"Bristol\",\n    \"rented_vehicles\": 37,\n    \"total_vehicles\": 160,\n    \"utilisation_rate_pc\": \"23%\"\n  },\n  {\n    \"branch\": \"Manchester\",\n    \"rented_vehicles\": 49,\n    \"total_vehicles\": 180,\n    \"utilisation_rate_pc\": \"27%\"\n  },\n  {\n    \"branch\": \"Luton\",\n    \"rented_vehicles\": 34,\n    \"total_vehicles\": 160,\n    \"utilisation_rate_pc\": \"21%\"\n  }\n]"
             }
           ]
+        },
+        {
+          "name": "Filter Vehicles - Standalone Search (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/vehicles/search",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "vehicles",
+                "search"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -938,7 +1071,7 @@
             "RM38TUU"
           ]
         },
-        "description": "Returns a single vehicle using its specified `vrm` or vehicle registration number."
+        "description": "Returns a vehicle using the specified `vrm` or vehicle registration number."
       },
       "response": [
         {
@@ -1023,11 +1156,11 @@
             "add"
           ]
         },
-        "description": "Tests the creation of a new vehicle record in the fleet database. This endpoint validates all required fields which need to be added to the **Request Body** in the **Body** tab before submitting the request. It then returns the newly created vehicle upon successful creation."
+        "description": "Add New Vehicle. Required fields for vehicle details must be provided in the request body in the Body tab."
       },
       "response": [
         {
-          "name": "POST - Add Vehicle - Success (201)",
+          "name": "Add Vehicle - Success (201)",
           "originalRequest": {
             "method": "POST",
             "header": [],
@@ -1088,7 +1221,7 @@
       ]
     },
     {
-      "name": "PATCH - Rent Vehicle",
+      "name": "Rent Vehicle",
       "request": {
         "method": "PATCH",
         "header": [],
@@ -1108,8 +1241,7 @@
             "YS62YNO",
             "rent"
           ]
-        },
-        "description": "Marks an vehicle that can be rented as `RENTED` using the specified `vrm` or vehicle registration number."
+        }
       },
       "response": [
         {
@@ -1162,6 +1294,57 @@
           ],
           "cookie": [],
           "body": "{\n  \"branch\": \"Luton\",\n  \"category\": \"Compact\",\n  \"colour\": \"Pink\",\n  \"daily_rate_gbp\": 40,\n  \"fuel_kmpl\": 17.8,\n  \"make\": \"Porsche\",\n  \"model\": \"Boxster\",\n  \"seat_number\": 4,\n  \"status\": \"RENTED\",\n  \"vehicle_id\": 14,\n  \"vin\": \"WAUHE98PX9A287796\",\n  \"vrm\": \"YS62YNO\",\n  \"year\": \"2010\"\n}"
+        },
+        {
+          "name": "Rent Vehicle - Vehicle already rented (400)",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/vehicles/YS62YNO/rent",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "vehicles",
+                "YS62YNO",
+                "rent"
+              ]
+            }
+          },
+          "status": "BAD REQUEST",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "server",
+              "value": "Werkzeug/3.1.3 Python/3.13.5"
+            },
+            {
+              "key": "date",
+              "value": "Thu, 24 Sep 2026 10:36:48 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "content-length",
+              "value": "46"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\": \"Vehicle unavailable for rent\"\n}"
         }
       ]
     },
@@ -1186,8 +1369,7 @@
             "JM00IOR",
             "return"
           ]
-        },
-        "description": "Marks a vehicle as returned using the specified `vrm` or vehicle registration number. The returned vehicle will be generally marked as `AVAILABLE`."
+        }
       },
       "response": [
         {
